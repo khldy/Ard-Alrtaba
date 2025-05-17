@@ -111,3 +111,17 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 10px;
   display: none;
 }
+
+
+.range-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  direction: ltr; /* important: makes 5 appear on left and 1 on right */
+}
+
+.range-container input[type="range"] {
+  flex: 1;
+}
+
