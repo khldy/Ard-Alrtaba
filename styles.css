@@ -25,6 +25,11 @@ label {
   display: block;
   margin-top: 5px;
 }
+
+landing-text{
+  color: #546f48;
+}
+
 button {
   padding: 10px 20px;
   background: #546f48;
