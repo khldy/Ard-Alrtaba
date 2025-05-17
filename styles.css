@@ -117,6 +117,8 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 20px;
+  height: 20px;
   justify-content: center;
   direction: ltr; /* important: makes 5 appear on left and 1 on right */
 }
