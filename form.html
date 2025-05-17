@@ -1,0 +1,153 @@
+<!-- form.html -->
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الاستبيان - أرض الرتابة</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <img src="logo.png" alt="website logo" class="logo" />
+    <form id="quizForm">
+      <!-- Repeat this block for each question -->
+      <div class="question">
+        <p>1. بحب أبادر بمساعد الناس</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="مساعدة" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. براعي اللي حواليا وأخلي بالي من مشاعرهم</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="تعاطف" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. بعتز باللي أملكه وبحافظ عليه</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="أصالة" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. بحب ابقى حر أكتر من التزامي بقواعد</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="استقلال" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. عندي قوة ملاحظة وفكر كتير</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="عمق" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>6. بشوف قيمة الأشياء وبقدرها</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="تقدير" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>7. مجتهد وبحب أبذل جهدي في اللي بعمله</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="اجتهاد" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>8. بحب أطلع أفكار جديدة وأنا بعمل حاجة</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="إبداع" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>9. بحب التأمل وبحس إني صبور عليه</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="تأمل" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>10. بقبل وجهات النظر المختلفة برحابة صدر كبيرة</p>
+        <div class="range-container">
+          <span>5</span>
+          <input type="range" min="1" max="5" name="شمول" />
+          <span>1</span>
+        </div>
+      </div>
+
+      <button type="submit">اعرف شخصيتك</button>
+    </form>
+
+    <div id="result" style="display: none;"></div>
+
+    <script>
+      const characters = {
+        مُنجِد: { مساعدة: 5, تعاطف: 4 },
+        مؤنس: { تعاطف: 5, شمول: 4 },
+        أصيل: { أصالة: 5, تقدير: 4 },
+        شامخ: { استقلال: 5 },
+        متدبر: { تأمل: 5, تقدير: 4 },
+        حميد: { شمول: 4, تقدير: 3 },
+        مُجِد: { اجتهاد: 5, أصالة: 3 },
+        مبتكر: { إبداع: 5, استقلال: 4 },
+        متعمّق: { عمق: 5, تأمل: 4 },
+        مُشمِل: { شمول: 5 },
+      };
+
+      document.getElementById("quizForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const userAnswers = {};
+        for (let [key, value] of formData.entries()) {
+          userAnswers[key] = parseInt(value);
+        }
+
+        let bestCharacter = null;
+        let highestScore = -Infinity;
+
+        for (let [character, traits] of Object.entries(characters)) {
+          let score = 0;
+          for (let trait in traits) {
+            if (userAnswers[trait]) {
+              score += traits[trait] * userAnswers[trait];
+            }
+          }
+          if (score > highestScore) {
+            highestScore = score;
+            bestCharacter = character;
+          }
+        }
+
+        document.getElementById("result").textContent = `🎉 شخصيتك في اللعبة هي: ${bestCharacter}`;
+        document.getElementById("result").style.display = "block";
+        window.scrollTo({ top: document.getElementById("result").offsetTop, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
