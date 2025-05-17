@@ -41,6 +41,13 @@ button:hover {
   background: #d4a236;
 }
 
+logo-landing {
+    display: block;
+  margin: 30px auto;
+  max-width: 200px; /* adjust size if needed */
+  height: auto;
+}
+
 .logo {
   display: block;
   margin: 30px auto;
