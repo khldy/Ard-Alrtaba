@@ -125,3 +125,7 @@ input[type="range"]::-moz-range-thumb {
   flex: 1;
 }
 
+
+.formLink{
+    text-decoration: none;
+}
