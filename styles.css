@@ -46,7 +46,7 @@ button:hover {
   background: #d4a236;
 }
 
-logo-landing {
+.logo-landing {
     display: block;
   margin: 30px auto;
   max-width: 200px; /* adjust size if needed */
@@ -64,6 +64,11 @@ logo-landing {
   .logo {
     max-width: 120px; /* smaller logo on mobile */
   }
+
+  logo-landing {
+    max-width: 120px; /* smaller logo on mobile */
+}
+  
 }
 
 input[type="range"] {
